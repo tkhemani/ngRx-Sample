@@ -7,10 +7,11 @@ import { removeNgStyles, createNewHosts, createInputTransfer, bootloader } from 
 
 
 import { AppComponent } from './app.component';
+import { NewCmpComponent } from './new-cmp/new-cmp.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, NewCmpComponent
   ],
   imports: [
     BrowserModule,
