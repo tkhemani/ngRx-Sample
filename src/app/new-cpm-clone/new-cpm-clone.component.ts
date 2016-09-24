@@ -10,14 +10,14 @@ interface AppState {
 }
 
 @Component({
-    selector: 'app-new-cmp',
+    selector: 'app-new-cmp-clone',
     template: `
         <button (click)="increment()">Increment</button>
         <div> Count: {{ counter | async }}</div>
         <button (click)="decrement()">Decrement</button>
     `
 })
-export class NewCmpComponent {
+export class NewCpmCloneComponent {
     counter: Observable<any>;
 
     constructor(public store: Store<AppState>){

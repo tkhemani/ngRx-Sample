@@ -3,20 +3,32 @@ import { NgModule, ApplicationRef} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { Store, StoreModule } from '@ngrx/store';
+import { counterReducer } from './counter';
+
 import { removeNgStyles, createNewHosts, createInputTransfer, bootloader } from '@angularclass/hmr';
 
 
 import { AppComponent } from './app.component';
-import { NewCmpComponent } from './new-cmp/new-cmp.component';
+import {NewCmpComponent} from './new-cmp/new-cmp.component';
+import { NewCpmCloneComponent } from './new-cpm-clone/new-cpm-clone.component';
+
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
-    AppComponent, NewCmpComponent
+    AppComponent, NewCmpComponent, NewCpmCloneComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    StoreModule.provideStore({ counter: counterReducer }, { counter: 0 }),
+    // Note that you must instrument after importing StoreModule
+    StoreDevtoolsModule.instrumentStore({
+      maxAge: 5,
+      monitor: counterReducer
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
